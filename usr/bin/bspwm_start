@@ -1,0 +1,34 @@
+#!/bin/sh
+
+#### autostarting applications bspwm
+xsetroot -cursor_name left_ptr &
+setxkbmap -layout es,us -option "grp:alt_shift_toggle,grp_led:scroll" &
+picom -b --config $HOME/.config/picom.conf &
+# hsetroot -fill /usr/share/wall/killer-os.png &
+nitrogen --restore &
+if [ "$(which polybar)" != "polybar not found" ]; then
+  $HOME/.config/bspwm/polybar/launch.sh &
+  # (sleep 2; sh ~/.bin/phide.sh) &
+fi
+tint2 -c $HOME/.config/tint2/tray.tint2rc &
+dunst &
+if [ "$(which thunar)" != "thunar not found" ]; then
+  thunar --daemon &
+fi
+# numlockx &
+xsettingsd &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+gnome-keyring-daemon --start --components=pkcs11 &
+nm-applet &
+# redshift-gtk &
+xfce4-power-manager &
+# caffeine &
+udiskie -t &
+# greenclip daemon &
+# clipit &
+parcellite &
+jgmenu_run start &
+# unclutter &
+# telegram-desktop &
+
+bspwm

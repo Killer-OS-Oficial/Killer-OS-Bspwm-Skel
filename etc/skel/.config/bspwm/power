@@ -1,0 +1,31 @@
+#!/bin/sh
+
+DIALOG_RESULT=$(echo -e 'Bloquear\nSalir de Bspwm\nSuspender bloqueo\nHibernar\nReiniciar\nApagar\nCancelar' | rofi -dmenu -i -p "SISTEMA" -hide-scrollbar -tokenize -lines 7 -eh 1 -width 25 -location 0 -xoffset 0 -yoffset 0 -padding 20 -disable-history)
+
+echo "Este resultado es: $DIALOG_RESULT"
+sleep 1;
+
+if [ "$DIALOG_RESULT" = "Bloquear" ];
+then
+    # exec i3lock-fancy
+    exec $HOME/.config/bspwm/multilock.sh -l blur
+elif [ "$DIALOG_RESULT" = "Salir de Bspwm" ];
+then
+    exec bspc quit
+elif [ "$DIALOG_RESULT" = "Suspender bloqueo" ];
+then
+    # exec systemctl suspend
+    exec $HOME/.config/bspwm/multilock.sh -s blur
+elif [ "$DIALOG_RESULT" = "Hibernar" ];
+then
+    exec systemctl hibernate
+elif [ "$DIALOG_RESULT" = "Reiniciar" ];
+then
+    exec systemctl reboot
+elif [ "$DIALOG_RESULT" = "Apagar" ];
+then
+    exec systemctl poweroff
+elif [ "$DIALOG_RESULT" = "Cancelar" ];
+then
+    exit 0
+fi
