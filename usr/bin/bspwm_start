@@ -2,7 +2,7 @@
 
 #### autostarting applications bspwm
 xsetroot -cursor_name left_ptr &
-setxkbmap -layout es,us -option "grp:alt_shift_toggle,grp_led:scroll" &
+setxkbmap -layout es,us,latam -option "grp:alt_shift_toggle,grp_led:scroll" &
 picom -b --config $HOME/.config/picom.conf &
 # hsetroot -fill /usr/share/wall/killer-os.png &
 nitrogen --restore &
