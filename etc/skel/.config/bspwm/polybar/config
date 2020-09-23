@@ -107,7 +107,7 @@ label-empty-padding = 4
 [module/uparch]
 type = custom/script
 exec = ~/.config/bspwm/polybar/uparch.sh
-interval = 600
+interval = 200
 format-prefix = " "
 format-prefix-foreground = ${colors.accent}
 click-left = "urxvt -name Pacui -e ~/.bin/pacui &"
@@ -120,8 +120,8 @@ exec = ~/.config/bspwm/status tor
 interval = 6
 format = <label>
 # format-padding = 1
-click-left = "systemctl restart tor"
-click-right = "systemctl stop tor"
+click-left = "systemctl restart killer-os-tor.service"
+click-right = "systemctl stop killer-os-tor.service"
 
 
 
